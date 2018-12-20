@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configs>
+	<config name="tempdir" value="F:/Server/apache-tomcat-8.0.36/webapps/linuxtemp" />
+</configs>

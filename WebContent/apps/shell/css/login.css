@@ -1,0 +1,275 @@
+@CHARSET "UTF-8";
+
+@font-face {
+  font-family: 'Iceland';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Iceland'), local('Iceland-Regular'), url(iceland.woff) format('woff');
+}
+
+html, body, .back-box {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	z-index: 1;
+}
+
+.icon, [class*=" icon-"], [class^=icon-]{
+	font-size: 26px !important;
+}
+
+.back-box canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.logo-box {
+	position: absolute;
+	width: 500px;
+	height: 100px;
+	top: 60px;
+	z-index: 3;
+	font-size: 48px;
+	text-align: center;
+	color: rgba(250, 128, 0, 0.82);
+	font-family:Iceland;
+}
+
+.logo-box:hover{
+  -webkit-animation: neon2 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon2 1.5s ease-in-out infinite alternate;
+  animation: neon2 1.5s ease-in-out infinite alternate;
+}
+
+
+.login-body {
+	position: absolute;
+	width: 400px;
+	height: 400px;
+	top: 180px;
+	z-index: 3;
+	display: none;
+	background: rgba(19, 37, 66, 0.58);
+	border: 1px solid rgba(96, 113, 175, 0.39);
+	color: rgba(255, 255, 255, 0.67);
+	box-shadow: 0 0 10px 0 #2d3c7b;
+   	border-radius: 5px;
+}
+
+.login_fields input {
+    background: transparent;
+    border: 0;
+    outline: none;
+    height: 30px;
+    width: 230px;    
+}
+
+.login-body h3 {
+	padding: 15px 30px;	
+	margin-top: 15px;
+}
+
+.login_fields__user,
+.login_fields__password {
+    width: 100%;
+    height: 50px;
+    padding-top: 10px;
+    margin-bottom: 25px;
+    background-color: rgba(0, 199, 255, 0.13);
+}
+
+.icon-box {
+	float: left;
+	width: 100px;
+	text-align: center;
+	line-height: 30px;
+}
+
+
+.validation {
+	float: right;
+	width: 60px;
+	text-align: center;
+	line-height: 30px;
+}
+
+.login_fields__user input {
+	color: rgb(11, 146, 149);
+}
+
+.login_fields__password input {
+	color: rgb(178, 88, 137);
+}
+
+.login_fields__submit {
+	width: 100%;
+    height: 70px;
+    padding-top: 20px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.login_fields__submit .btn {
+	background-color: rgba(0, 0, 0, 0.21);
+    border: 1px dashed rgba(167, 184, 232, 0.54);
+    outline: none;
+    width: 200px;
+    height: 35px;
+    color: rgba(116, 116, 116, 0.6);
+}
+
+.login_fields__submit .btn:hover {
+	border: 1px dashed rgba(248, 248, 248, 0.87);
+    background-color: rgba(83, 100, 171, 0.26);
+}
+
+.login-body.test {
+  pointer-events: none;
+  -webkit-transform: rotateX(40deg) scale(0.8) !important;
+          transform: rotateX(40deg) scale(0.8) !important;
+  -webkit-filter: blur(1px);
+          filter: blur(1px);
+}
+
+.backimg {
+    position: absolute;
+    background: url('../../../images/in_top_bj.jpg') repeat-x;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    opacity: 0.4;
+}
+
+.wait-box {
+	width: 500px;
+	height: 400px;
+	position: absolute;
+	top: 150px;
+	z-index: 10;
+    padding: 50px;
+    display: none;
+}
+
+.spinner {
+  	width: 60px;
+  	height: 60px;
+  	background-color: #3333cc;
+  	margin: auto;
+  	-webkit-animation: rotateplane 1.2s infinite ease-in-out;
+  	animation: rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes rotateplane {
+  	0% { -webkit-transform: perspective(120px) }
+	50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+	100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+ 
+@keyframes rotateplane {
+	0% {
+    	transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    	-webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  	} 50% {
+    	transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    	-webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    	background-color: #cc3333;
+  	} 100% {
+    	transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    	-webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  	}
+}
+
+.wait-box .msg {
+    width: 100%;
+    margin-bottom: 30px;
+    font-size: 16px;
+    color: #ffffff;
+    text-align: center;
+}
+
+@-webkit-keyframes neon2 {
+  from {
+    text-shadow: 0 0 10px #fff,
+               0 0 20px  #fff,
+               0 0 30px  #fff,
+               0 0 40px  #ff8800,
+               0 0 70px  #ff8800,
+               0 0 80px  #ff8800,
+               0 0 100px #ff8800,
+               0 0 150px #ff8800;
+  }
+  to {
+    text-shadow: 0 0 5px #ffff00,
+               0 0 10px #ffff00,
+               0 0 15px #ffff00,
+               0 0 20px #ff8800,
+               0 0 35px #ff8800,
+               0 0 40px #ff8800,
+               0 0 50px #ff8800,
+               0 0 75px #ff8800;
+  }
+}
+
+
+
+/* mobile */
+.mobile .backimg {
+	background: url(../../../images/appb.jpg) 100% 100%;
+}
+
+.mobile .logo-box {
+    width: 100%;
+    font-size: 28px;
+    left: 0 !important;
+    height: 50px;
+    top: 10px;
+}
+
+.mobile .login-body {
+    width: calc(100% - 20px);
+    left: 10px !important;
+    top: 70px;
+    height: 300px;
+}
+
+.mobile .wait-box {
+    top: 85px;
+}
+
+.mobile.linux .login_fields__submit {
+	margin-top: 0;
+    padding-top: 10px;
+}
+
+.mobile.linux .login_fields__user, 
+.mobile.linux .login_fields__password {
+    margin-bottom: 10px;
+    padding-top: 8px;
+    height: 46px;
+}
+
+.mobile.linux .login-body h3 {
+    padding: 5px 30px;
+    margin-top: 10px;
+}
+
+.mobile.linux .login-body {
+    top: 50px;
+    height: 280px;
+}
+
+.mobile.linux .logo-box {
+	height: 43px;
+    top: 0;
+}
+
+.mobile .login_fields input {
+	margin-top: -5px;
+}
+
+.mobile .validation {
+    margin-top: -23px;
+}

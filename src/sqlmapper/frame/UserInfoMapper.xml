@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yinsin.simter.dao.frame.UserInfoMapper">
+    <resultMap id="BaseResultMap" type="com.yinsin.simter.modal.frame.UserInfo">
+        <id column="ID" jdbcType="INTEGER" property="id" />
+        <result column="ACCOUNT" jdbcType="VARCHAR" property="account" />
+        <result column="PASSWORD" jdbcType="VARCHAR" property="password" />
+        <result column="NAME" jdbcType="VARCHAR" property="name" />
+        <result column="NICKNAME" jdbcType="VARCHAR" property="nickname" />
+        <result column="SEX" jdbcType="VARCHAR" property="sex" />
+        <result column="MOBILE" jdbcType="VARCHAR" property="mobile" />
+        <result column="EMAIL" jdbcType="VARCHAR" property="email" />
+        <result column="QQ" jdbcType="VARCHAR" property="qq" />
+        <result column="PROVINCE" jdbcType="VARCHAR" property="province" />
+        <result column="CITY" jdbcType="VARCHAR" property="city" />
+        <result column="REGISTERDATE" jdbcType="VARCHAR" property="registerdate" />
+        <result column="LASTLOGINDATE" jdbcType="VARCHAR" property="lastlogindate" />
+        <result column="STATUS" jdbcType="INTEGER" property="status" />
+        <result column="ONLINES" jdbcType="INTEGER" property="onlines" />
+        <result column="USERIP" jdbcType="VARCHAR" property="userip" />
+        <result column="HEADIMAGE" jdbcType="VARCHAR" property="headimage" />
+
+    </resultMap>
+    
+    <sql id="Base_Column_List">
+        ID, ACCOUNT, PASSWORD, NAME, NICKNAME, SEX, MOBILE, EMAIL, QQ, PROVINCE, CITY, REGISTERDATE, LASTLOGINDATE, STATUS, ONLINES, USERIP, HEADIMAGE
+
+    </sql>
+    
+    <select id="selectByPrimaryColumn" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select 
+        <include refid="Base_Column_List" />
+        from user_info
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+  
+    <select id="select" parameterType="com.yinsin.simter.modal.frame.UserInfo" resultMap="BaseResultMap">
+        select 
+        <include refid="Base_Column_List" />
+        from user_info
+        where 1 = 1
+        <if test="id != null" >
+            and ID = #{id,jdbcType=INTEGER}
+        </if>
+        <if test="account != null" >
+            and ACCOUNT = #{account,jdbcType=VARCHAR}
+        </if>
+        <if test="password != null" >
+            and PASSWORD = #{password,jdbcType=VARCHAR}
+        </if>
+        <if test="name != null" >
+            and NAME = #{name,jdbcType=VARCHAR}
+        </if>
+        <if test="nickname != null" >
+            and NICKNAME = #{nickname,jdbcType=VARCHAR}
+        </if>
+        <if test="sex != null" >
+            and SEX = #{sex,jdbcType=VARCHAR}
+        </if>
+        <if test="mobile != null" >
+            and MOBILE = #{mobile,jdbcType=VARCHAR}
+        </if>
+        <if test="email != null" >
+            and EMAIL = #{email,jdbcType=VARCHAR}
+        </if>
+        <if test="qq != null" >
+            and QQ = #{qq,jdbcType=VARCHAR}
+        </if>
+        <if test="province != null" >
+            and PROVINCE = #{province,jdbcType=VARCHAR}
+        </if>
+        <if test="city != null" >
+            and CITY = #{city,jdbcType=VARCHAR}
+        </if>
+        <if test="registerdate != null" >
+            and REGISTERDATE = #{registerdate,jdbcType=VARCHAR}
+        </if>
+        <if test="lastlogindate != null" >
+            and LASTLOGINDATE = #{lastlogindate,jdbcType=VARCHAR}
+        </if>
+        <if test="status != null" >
+            and STATUS = #{status,jdbcType=INTEGER}
+        </if>
+        <if test="onlines != null" >
+            and ONLINES = #{onlines,jdbcType=INTEGER}
+        </if>
+        <if test="userip != null" >
+            and USERIP = #{userip,jdbcType=VARCHAR}
+        </if>
+        <if test="headimage != null" >
+            and HEADIMAGE = #{headimage,jdbcType=VARCHAR}
+        </if>
+
+    </select>
+    
+    <delete id="deleteByPrimaryColumn" parameterType="java.lang.Integer">
+        delete from user_info where ID = #{id,jdbcType=INTEGER}
+    </delete>
+    
+    <insert id="insert" parameterType="com.yinsin.simter.modal.frame.UserInfo">
+        insert into user_info (
+            ACCOUNT, PASSWORD, NAME, NICKNAME, SEX, MOBILE, EMAIL, QQ, PROVINCE, CITY, REGISTERDATE, LASTLOGINDATE, STATUS, ONLINES, USERIP, HEADIMAGE
+
+        )
+        values (
+            #{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{registerdate,jdbcType=VARCHAR}, #{lastlogindate,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{onlines,jdbcType=INTEGER}, #{userip,jdbcType=VARCHAR}, #{headimage,jdbcType=VARCHAR} 
+        )
+    </insert>
+  
+    <insert id="insertSelective" parameterType="com.yinsin.simter.modal.frame.UserInfo">
+        insert into user_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+        <if test="account != null">
+            ACCOUNT,
+        </if>
+        <if test="password != null">
+            PASSWORD,
+        </if>
+        <if test="name != null">
+            NAME,
+        </if>
+        <if test="nickname != null">
+            NICKNAME,
+        </if>
+        <if test="sex != null">
+            SEX,
+        </if>
+        <if test="mobile != null">
+            MOBILE,
+        </if>
+        <if test="email != null">
+            EMAIL,
+        </if>
+        <if test="qq != null">
+            QQ,
+        </if>
+        <if test="province != null">
+            PROVINCE,
+        </if>
+        <if test="city != null">
+            CITY,
+        </if>
+        <if test="registerdate != null">
+            REGISTERDATE,
+        </if>
+        <if test="lastlogindate != null">
+            LASTLOGINDATE,
+        </if>
+        <if test="status != null">
+            STATUS,
+        </if>
+        <if test="onlines != null">
+            ONLINES,
+        </if>
+        <if test="userip != null">
+            USERIP,
+        </if>
+        <if test="headimage != null">
+            HEADIMAGE,
+        </if>
+
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+        <if test="account != null">
+            #{account,jdbcType=VARCHAR},
+        </if>
+        <if test="password != null">
+            #{password,jdbcType=VARCHAR},
+        </if>
+        <if test="name != null">
+            #{name,jdbcType=VARCHAR},
+        </if>
+        <if test="nickname != null">
+            #{nickname,jdbcType=VARCHAR},
+        </if>
+        <if test="sex != null">
+            #{sex,jdbcType=VARCHAR},
+        </if>
+        <if test="mobile != null">
+            #{mobile,jdbcType=VARCHAR},
+        </if>
+        <if test="email != null">
+            #{email,jdbcType=VARCHAR},
+        </if>
+        <if test="qq != null">
+            #{qq,jdbcType=VARCHAR},
+        </if>
+        <if test="province != null">
+            #{province,jdbcType=VARCHAR},
+        </if>
+        <if test="city != null">
+            #{city,jdbcType=VARCHAR},
+        </if>
+        <if test="registerdate != null">
+            #{registerdate,jdbcType=VARCHAR},
+        </if>
+        <if test="lastlogindate != null">
+            #{lastlogindate,jdbcType=VARCHAR},
+        </if>
+        <if test="status != null">
+            #{status,jdbcType=INTEGER},
+        </if>
+        <if test="onlines != null">
+            #{onlines,jdbcType=INTEGER},
+        </if>
+        <if test="userip != null">
+            #{userip,jdbcType=VARCHAR},
+        </if>
+        <if test="headimage != null">
+            #{headimage,jdbcType=VARCHAR},
+        </if>
+
+        </trim>
+    </insert>
+  
+    <update id="updateByPrimaryColumnSelective" parameterType="com.yinsin.simter.modal.frame.UserInfo">
+        update user_info
+        <set>
+        <if test="account != null">
+            ACCOUNT = #{account,jdbcType=VARCHAR},
+        </if>
+        <if test="password != null">
+            PASSWORD = #{password,jdbcType=VARCHAR},
+        </if>
+        <if test="name != null">
+            NAME = #{name,jdbcType=VARCHAR},
+        </if>
+        <if test="nickname != null">
+            NICKNAME = #{nickname,jdbcType=VARCHAR},
+        </if>
+        <if test="sex != null">
+            SEX = #{sex,jdbcType=VARCHAR},
+        </if>
+        <if test="mobile != null">
+            MOBILE = #{mobile,jdbcType=VARCHAR},
+        </if>
+        <if test="email != null">
+            EMAIL = #{email,jdbcType=VARCHAR},
+        </if>
+        <if test="qq != null">
+            QQ = #{qq,jdbcType=VARCHAR},
+        </if>
+        <if test="province != null">
+            PROVINCE = #{province,jdbcType=VARCHAR},
+        </if>
+        <if test="city != null">
+            CITY = #{city,jdbcType=VARCHAR},
+        </if>
+        <if test="registerdate != null">
+            REGISTERDATE = #{registerdate,jdbcType=VARCHAR},
+        </if>
+        <if test="lastlogindate != null">
+            LASTLOGINDATE = #{lastlogindate,jdbcType=VARCHAR},
+        </if>
+        <if test="status != null">
+            STATUS = #{status,jdbcType=INTEGER},
+        </if>
+        <if test="onlines != null">
+            ONLINES = #{onlines,jdbcType=INTEGER},
+        </if>
+        <if test="userip != null">
+            USERIP = #{userip,jdbcType=VARCHAR},
+        </if>
+        <if test="headimage != null">
+            HEADIMAGE = #{headimage,jdbcType=VARCHAR},
+        </if>
+
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+    
+    <update id="updateByPrimaryColumn" parameterType="com.yinsin.simter.modal.frame.UserInfo">
+        update user_info
+        set 
+        ACCOUNT = #{account,jdbcType=VARCHAR}, 
+        PASSWORD = #{password,jdbcType=VARCHAR}, 
+        NAME = #{name,jdbcType=VARCHAR}, 
+        NICKNAME = #{nickname,jdbcType=VARCHAR}, 
+        SEX = #{sex,jdbcType=VARCHAR}, 
+        MOBILE = #{mobile,jdbcType=VARCHAR}, 
+        EMAIL = #{email,jdbcType=VARCHAR}, 
+        QQ = #{qq,jdbcType=VARCHAR}, 
+        PROVINCE = #{province,jdbcType=VARCHAR}, 
+        CITY = #{city,jdbcType=VARCHAR}, 
+        REGISTERDATE = #{registerdate,jdbcType=VARCHAR}, 
+        LASTLOGINDATE = #{lastlogindate,jdbcType=VARCHAR}, 
+        STATUS = #{status,jdbcType=INTEGER}, 
+        ONLINES = #{onlines,jdbcType=INTEGER}, 
+        USERIP = #{userip,jdbcType=VARCHAR}, 
+        HEADIMAGE = #{headimage,jdbcType=VARCHAR}
+
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+    
+    <insert id="insertBatch" parameterType="java.util.List">  
+        insert into user_info (
+                        ACCOUNT, PASSWORD, NAME, NICKNAME, SEX, MOBILE, EMAIL, QQ, PROVINCE, CITY, REGISTERDATE, LASTLOGINDATE, STATUS, ONLINES, USERIP, HEADIMAGE
+
+        )
+        values 
+        <foreach collection="list" index="index" item="item" separator=",">  
+        (
+        #{item.account,jdbcType=VARCHAR}, 
+        #{item.password,jdbcType=VARCHAR}, 
+        #{item.name,jdbcType=VARCHAR}, 
+        #{item.nickname,jdbcType=VARCHAR}, 
+        #{item.sex,jdbcType=VARCHAR}, 
+        #{item.mobile,jdbcType=VARCHAR}, 
+        #{item.email,jdbcType=VARCHAR}, 
+        #{item.qq,jdbcType=VARCHAR}, 
+        #{item.province,jdbcType=VARCHAR}, 
+        #{item.city,jdbcType=VARCHAR}, 
+        #{item.registerdate,jdbcType=VARCHAR}, 
+        #{item.lastlogindate,jdbcType=VARCHAR}, 
+        #{item.status,jdbcType=INTEGER}, 
+        #{item.onlines,jdbcType=INTEGER}, 
+        #{item.userip,jdbcType=VARCHAR}, 
+        #{item.headimage,jdbcType=VARCHAR}
+
+        )
+        </foreach>
+    </insert>
+  
+    <update id="updateBatch" parameterType="java.util.List"> 
+        update user_info
+        set 
+        ACCOUNT = #{account,jdbcType=VARCHAR}, 
+        PASSWORD = #{password,jdbcType=VARCHAR}, 
+        NAME = #{name,jdbcType=VARCHAR}, 
+        NICKNAME = #{nickname,jdbcType=VARCHAR}, 
+        SEX = #{sex,jdbcType=VARCHAR}, 
+        MOBILE = #{mobile,jdbcType=VARCHAR}, 
+        EMAIL = #{email,jdbcType=VARCHAR}, 
+        QQ = #{qq,jdbcType=VARCHAR}, 
+        PROVINCE = #{province,jdbcType=VARCHAR}, 
+        CITY = #{city,jdbcType=VARCHAR}, 
+        REGISTERDATE = #{registerdate,jdbcType=VARCHAR}, 
+        LASTLOGINDATE = #{lastlogindate,jdbcType=VARCHAR}, 
+        STATUS = #{status,jdbcType=INTEGER}, 
+        ONLINES = #{onlines,jdbcType=INTEGER}, 
+        USERIP = #{userip,jdbcType=VARCHAR}, 
+        HEADIMAGE = #{headimage,jdbcType=VARCHAR}
+
+        where ID = #{id,jdbcType=INTEGER}
+        <foreach close=")" collection="idList" index="index" item="item" open="(" separator=",">     
+            #{item}
+        </foreach>
+    </update>
+ 
+    <delete id="deleteBatch" parameterType="java.util.List"> 
+        DELETE FROM user_info WHERE ID IN 
+        <foreach close=")" collection="list" index="index" item="item" open="(" separator=",">  
+            #{item}  
+        </foreach> 
+    </delete>
+ 
+</mapper>

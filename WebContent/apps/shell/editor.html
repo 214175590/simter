@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit" />
+<title> Linux Web Os </title>
+<link rel="stylesheet" href="./css/editor.css" />
+<link rel="stylesheet" href="../../lib/codemirror/lib/codemirror.css" />
+<link rel="stylesheet" href="../../lib/codemirror/addon/lint/lint.css" />
+<link rel="stylesheet" href="../../lib/codemirror/addon/hint/show-hint.css" />
+<link rel="stylesheet" href="../../lib/codemirror/theme/ambiance.css" />
+
+<script src="../../lib/codemirror/lib/codemirror-min.js"></script>
+<script src="../../lib/codemirror/mode/javascript/javascript.js"></script>
+<script src="../../lib/codemirror/addon/lint/lint.js"></script>
+
+<script src="../../lib/codemirror/addon/lint/javascript-lint.js"></script>
+<script src="../../lib/codemirror/addon/hint/jshint.js"></script>
+<script src="../../lib/codemirror/addon/hint/jsonlint.js"></script>
+<script src="../../lib/codemirror/addon/hint/csslint.js"></script>
+
+<script src="../../lib/codemirror/addon/hint/show-hint.js"></script>
+<script src="../../lib/codemirror/addon/lint/css-lint.js"></script>
+<script src="../../lib/codemirror/addon/hint/xml-hint.js"></script>
+<script src="../../lib/codemirror/addon/hint/html-hint.js"></script>
+
+<script id="seajsnode" type="text/javascript" src="../../loader.js" data-js="./js/editor.js"></script>
+</head>
+<body>
+	<header>
+		<span class="logo-text">Vim</span>
+		<a class="icon-btn btn-save disabled" href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="保存(Ctrl + S)"><i class="icon icon-save"></i></a>
+		<a class="icon-btn btn-sync disabled" href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="同步到服务器(Ctrl + R)"><i class="icon icon-random"></i></a>
+	</header>
+	<div class="main-body">
+		<textarea id="code-edit" class="area"></textarea>
+	</div>
+</body>
+</html>

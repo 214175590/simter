@@ -1,0 +1,115 @@
+@CHARSET "UTF-8";
+
+@IMPORT url("../../../common/css/common.css");
+
+header {
+    width: 100%;
+    height: 40px;
+    line-height: 33px;
+    padding: 5px 2px;
+}
+
+header .form-text {
+    float: left;
+    width: 65px;
+    line-height: 33px;
+    text-align: right;
+}
+
+header .form-input {
+    float: left;
+    width: calc(100% - 160px);
+}
+
+header .form-button {
+    width: 90px;
+    float: left;
+    text-align: center;
+    line-height: 30px;
+}
+
+header .form-button .btn {
+    padding: 5px 10px;
+}
+
+.container {
+    max-width: 100%;
+}
+
+.result-panel {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.modified-field {
+	width: 170px !important;
+}
+
+.attr-field {
+	width: 120px !important;
+}
+
+.size-field {
+	width: 80px !important;
+}
+
+.type-field {
+	width: 100px !important;
+}
+
+.owner-field {
+	width: 70px !important;
+}
+
+.sort-disabled {
+	width: 130px !important;
+}
+
+table.table-datatable tr.hover td.name-field {
+    background: #f1a325 !important;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.btn-del {
+    color: red;
+}
+
+.btn-open-folder {
+    color: #00a220;
+}
+
+.btn-download {
+    color: #e40098;
+}
+
+.btn-upload {
+    color: #ffb700;
+}
+
+.btn-edit {
+    color: #00bfbb;
+}
+
+.upload-box {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    z-index: 1;
+    opacity: 0;
+    right: 800px;
+    top: 50px;
+}
+
+#down-frame {
+	opacity: 0;
+	position: absolute;
+	width: 1px;
+	height: 0px;
+}
+
+tr.dir .name-field {
+    color: #d88300;
+    font-weight: 900;
+}

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 用户表 -->
+<mapper namespace="com.yinsin.simter.dao.yxos.YxosLinuxHostMapper">
+    <resultMap id="BaseResultMap" type="com.yinsin.simter.modal.yxos.YxosLinuxHost">
+    	<id column="id" jdbcType="VARCHAR" property="id" />
+        <result column="user_id" jdbcType="VARCHAR" property="userId" />
+        <result column="account" jdbcType="VARCHAR" property="account" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="host" jdbcType="VARCHAR" property="host" />
+        <result column="port" jdbcType="INTEGER" property="port" />
+        <result column="group_id" jdbcType="VARCHAR" property="groupId" />
+
+    </resultMap>
+    
+    <sql id="Base_Column_List">
+        id, user_id, account, password, name, host, port, group_id
+    </sql>
+    
+    <select id="selectByPrimaryColumn" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select 
+        <include refid="Base_Column_List" />
+        from yxos_linux_host
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+  
+    <select id="select" parameterType="com.yinsin.simter.modal.yxos.YxosLinuxHost" resultMap="BaseResultMap">
+        select 
+        <include refid="Base_Column_List" />
+        from yxos_linux_host
+        where 1 = 1
+        <if test="id != null" >
+            and id = #{id,jdbcType=VARCHAR}
+        </if>
+        <if test="userId != null" >
+            and user_id = #{userId,jdbcType=VARCHAR}
+        </if>
+        <if test="host != null" >
+            and host = #{host,jdbcType=VARCHAR}
+        </if>
+        <if test="name != null" >
+            and name = #{name,jdbcType=VARCHAR}
+        </if>
+        <if test="account != null" >
+            and account = #{account,jdbcType=VARCHAR}
+        </if>
+        <if test="groupId != null" >
+            and group_id = #{groupId,jdbcType=VARCHAR}
+        </if>
+    </select>
+    
+    <delete id="delete" parameterType="java.lang.String">
+        delete from yxos_linux_host where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    
+    <delete id="deleteByHost" parameterType="com.yinsin.simter.modal.yxos.YxosLinuxHost">
+        delete from yxos_linux_host where 
+        <choose>
+        	<when test="id != null">
+	            id = #{id,jdbcType=VARCHAR}
+        	</when>
+        	<otherwise>
+            	user_id = #{userId,jdbcType=VARCHAR}
+            	and host = #{host,jdbcType=VARCHAR}
+        	</otherwise>
+        </choose>
+    </delete>
+    
+    <insert id="insert" parameterType="com.yinsin.simter.modal.yxos.YxosLinuxHost" useGeneratedKeys="true" keyProperty="userId">
+        insert into yxos_linux_host (
+            id, user_id, account, password, name, host, port, group_id
+        )
+        values (
+            #{id,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+            #{password,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{host,jdbcType=VARCHAR}, 
+            #{port,jdbcType=INTEGER}, #{groupId,jdbcType=VARCHAR}
+        )
+    </insert>
+  
+    <insert id="insertSelective" parameterType="com.yinsin.simter.modal.yxos.YxosLinuxHost">
+        insert into yxos_linux_host
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+	        <if test="id != null">
+	            id,
+	        </if>
+	        <if test="userId != null">
+	            user_id,
+	        </if>
+	        <if test="account != null">
+	            account,
+	        </if>
+	        <if test="password != null">
+	            password,
+	        </if>
+	        <if test="name != null">
+	            name,
+	        </if>
+	        <if test="host != null">
+	            host,
+	        </if>
+	        <if test="port != null">
+	            port,
+	        </if>
+	        <if test="groupId != null">
+	            group_id,
+	        </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+	        <if test="id != null">
+	            #{id,jdbcType=VARCHAR},
+	        </if>
+	        <if test="userId != null">
+	            #{userId,jdbcType=VARCHAR},
+	        </if>
+	        <if test="account != null">
+	            #{account,jdbcType=VARCHAR},
+	        </if>
+	        <if test="password != null">
+	            #{password,jdbcType=VARCHAR},
+	        </if>
+	        <if test="name != null">
+	            #{name,jdbcType=VARCHAR},
+	        </if>
+	        <if test="host != null">
+	            #{host,jdbcType=VARCHAR},
+	        </if>
+	        <if test="port != null">
+	            #{port,jdbcType=INTEGER},
+	        </if>
+	        <if test="groupId != null">
+	            #{groupId,jdbcType=INTEGER},
+	        </if>
+        </trim>
+    </insert>
+  
+    <update id="updateSelective" parameterType="com.yinsin.simter.modal.yxos.YxosLinuxHost">
+        update yxos_linux_host
+        <set>
+	        <if test="account != null">
+	            account = #{account,jdbcType=VARCHAR},
+	        </if>
+	        <if test="password != null">
+	            password = #{password,jdbcType=VARCHAR},
+	        </if>
+	        <if test="name != null">
+	            name = #{name,jdbcType=VARCHAR},
+	        </if>
+	        <if test="host != null">
+	            host = #{host,jdbcType=VARCHAR},
+	        </if>
+	        <if test="port != null">
+	            port = #{port,jdbcType=INTEGER},
+	        </if>
+	        <if test="groupId != null">
+	            group_id = #{groupId,jdbcType=INTEGER},
+	        </if>
+        </set>
+        where user_id = #{userId,jdbcType=VARCHAR}
+    </update>
+    
+    <update id="update" parameterType="com.yinsin.simter.modal.yxos.YxosLinuxHost">
+    	update yxos_linux_host 
+        set 
+        account = #{account,jdbcType=VARCHAR}, 
+        password = #{password,jdbcType=VARCHAR}, 
+        name = #{name,jdbcType=VARCHAR}, 
+        host = #{host,jdbcType=VARCHAR}, 
+        port = #{port,jdbcType=INTEGER},
+        group_id = #{groupId,jdbcType=VARCHAR}
+
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    
+    <insert id="insertBatch" parameterType="java.util.List">  
+        insert into yxos_linux_host (
+            id, user_id, account, password, name, host, port, group_id
+        )
+        values 
+        <foreach collection="list" index="index" item="item" separator=",">  
+        (
+            #{item.id,jdbcType=VARCHAR}, 
+            #{item.userId,jdbcType=VARCHAR}, 
+	        #{item.account,jdbcType=VARCHAR}, 
+	        #{item.password,jdbcType=VARCHAR}, 
+	        #{item.name,jdbcType=VARCHAR}, 
+	        #{item.host,jdbcType=VARCHAR}, 
+	        #{item.port,jdbcType=INTEGER},
+	        #{item.groupId,jdbcType=VARCHAR}
+        )
+        </foreach>
+    </insert>
+  
+    <delete id="deleteBatch" parameterType="java.util.List"> 
+        DELETE FROM yxos_linux_host WHERE id IN 
+        <foreach close=")" collection="list" index="index" item="item" open="(" separator=",">  
+            #{item}  
+        </foreach> 
+    </delete>
+ 
+</mapper>

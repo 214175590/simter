@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 用户表 -->
+<mapper namespace="com.yinsin.simter.dao.yxos.YxosUserMapper">
+    <resultMap id="BaseResultMap" type="com.yinsin.simter.modal.yxos.YxosUser">
+        <id column="user_id" jdbcType="VARCHAR" property="userId" />
+        <result column="user_account" jdbcType="VARCHAR" property="userAccount" />
+        <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
+        <result column="user_name" jdbcType="VARCHAR" property="userName" />
+        <result column="user_idcard" jdbcType="VARCHAR" property="userIdcard" />
+        <result column="user_sex" jdbcType="VARCHAR" property="userSex" />
+        <result column="user_age" jdbcType="INTEGER" property="userAge" />
+        <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
+        <result column="user_statue" jdbcType="INTEGER" property="userStatue" />
+        <result column="user_email" jdbcType="VARCHAR" property="userEmail" />
+        <result column="user_purview" jdbcType="INTEGER" property="userPurview" />
+        <result column="user_onlines" jdbcType="INTEGER" property="userOnlines" />
+        <result column="user_area" jdbcType="VARCHAR" property="userArea" />
+        <result column="user_register_time" jdbcType="VARCHAR" property="userRegisterTime" />
+        <result column="user_login_time" jdbcType="VARCHAR" property="userLoginTime" />
+        <result column="user_photo" jdbcType="VARCHAR" property="userPhoto" />
+    </resultMap>
+    
+    <sql id="Base_Column_List">
+        user_id, user_account, user_password, user_name, user_idcard, user_sex, user_age, user_phone, user_statue, user_email, user_purview, user_onlines, user_area, user_register_time, user_login_time, user_photo
+
+    </sql>
+    
+    <select id="selectByPrimaryColumn" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT 
+        	u.user_id, u.user_account, u.user_password, u.user_name, u.user_idcard, 
+        	u.user_sex, u.user_age, u.user_phone, u.user_statue, u.user_email, u.user_purview, 
+        	u.user_onlines, u.user_area, u.user_register_time, u.user_login_time, u.user_photo
+        FROM yxos_user u       
+        WHERE u.user_id = #{userId,jdbcType=VARCHAR}
+    </select>
+  
+    <select id="select" parameterType="com.yinsin.simter.modal.yxos.YxosUser" resultMap="BaseResultMap">
+        SELECT 
+        	u.user_id, u.user_account, u.user_password, u.user_name, u.user_idcard, 
+        	u.user_sex, u.user_age, u.user_phone, u.user_statue, u.user_email, u.user_purview, 
+        	u.user_onlines, u.user_area, u.user_register_time, u.user_login_time, u.user_photo
+        FROM yxos_user u
+        WHERE 1 = 1
+        <if test="userId != null" >
+            and u.user_id = #{userId,jdbcType=VARCHAR}
+        </if>
+        <if test="userAccount != null" >
+            and u.user_account like #{userAccount,jdbcType=VARCHAR}
+        </if>
+        <if test="userName != null" >
+            and u.user_name like #{userName,jdbcType=VARCHAR}
+        </if>
+        <if test="userIdcard != null" >
+            and u.user_idcard = #{userIdcard,jdbcType=VARCHAR}
+        </if>
+        <if test="userSex != null" >
+            and u.user_sex = #{userSex,jdbcType=VARCHAR}
+        </if>
+        <if test="userAge != null" >
+            and u.user_age = #{userAge,jdbcType=INTEGER}
+        </if>
+        <if test="userPhone != null" >
+            and u.user_phone = #{userPhone,jdbcType=VARCHAR}
+        </if>
+        <if test="userStatue != null" >
+            and u.user_statue = #{userStatue,jdbcType=INTEGER}
+        </if>
+        <if test="userEmail != null" >
+            and u.user_email = #{userEmail,jdbcType=VARCHAR}
+        </if>
+        <if test="userPurview != null" >
+            and u.user_purview = #{userPurview,jdbcType=INTEGER}
+        </if>
+        <if test="userArea != null" >
+            and u.user_area = #{userArea,jdbcType=VARCHAR}
+        </if>
+        <if test="userRegisterTime != null" >
+            and u.user_register_time = #{userRegisterTime,jdbcType=VARCHAR}
+        </if>
+        <choose>
+        	<when test="userOnlines != null">
+				ORDER BY u.user_purview DESC
+        	</when>
+        	<otherwise>
+				ORDER BY user_statue ASC, u.user_register_time DESC
+        	</otherwise>
+        </choose>
+    </select>
+    
+    <delete id="delete" parameterType="java.lang.String">
+        delete from yxos_user where user_id = #{userId,jdbcType=VARCHAR}
+    </delete>
+    
+    <delete id="deleteUser" parameterType="java.lang.String">
+        DELETE 
+		    yxos_user_icon,
+		    yxos_user_company_info 
+		FROM
+		    yxos_user_icon,
+		    yxos_user_company_info 
+		WHERE yxos_user_icon.user_id = #{userId,jdbcType=VARCHAR}
+		    AND yxos_user_company_info.user_id = #{userId,jdbcType=VARCHAR} 
+    </delete>
+    
+    <insert id="insert" parameterType="com.yinsin.simter.modal.yxos.YxosUser" useGeneratedKeys="true" keyProperty="userId">
+        insert into yxos_user (
+            user_id, user_account, user_password, user_name, user_idcard, user_sex, user_age, user_phone, user_statue, user_email, user_purview, user_onlines, user_area, user_register_time, user_login_time, user_photo
+        )
+        values (
+            #{userId,jdbcType=VARCHAR}, #{userAccount,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userIdcard,jdbcType=VARCHAR}, #{userSex,jdbcType=VARCHAR}, #{userAge,jdbcType=INTEGER}, #{userPhone,jdbcType=VARCHAR}, #{userStatue,jdbcType=INTEGER}, #{userEmail,jdbcType=VARCHAR}, #{userPurview,jdbcType=INTEGER}, #{userOnlines,jdbcType=INTEGER}, #{userArea,jdbcType=VARCHAR}, #{userRegisterTime,jdbcType=VARCHAR}, #{userLoginTime,jdbcType=VARCHAR}, #{userPhoto,jdbcType=VARCHAR}
+        )
+    </insert>
+  
+    <insert id="insertSelective" parameterType="com.yinsin.simter.modal.yxos.YxosUser">
+        insert into yxos_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+        <if test="userId != null">
+            user_id,
+        </if>
+        <if test="userAccount != null">
+            user_account,
+        </if>
+        <if test="userPassword != null">
+            user_password,
+        </if>
+        <if test="userName != null">
+            user_name,
+        </if>
+        <if test="userIdcard != null">
+            user_idcard,
+        </if>
+        <if test="userSex != null">
+            user_sex,
+        </if>
+        <if test="userAge != null">
+            user_age,
+        </if>
+        <if test="userPhone != null">
+            user_phone,
+        </if>
+        <if test="userStatue != null">
+            user_statue,
+        </if>
+        <if test="userEmail != null">
+            user_email,
+        </if>
+        <if test="userPurview != null">
+            user_purview,
+        </if>
+        <if test="userOnlines != null">
+            user_onlines,
+        </if>
+        <if test="userArea != null">
+            user_area,
+        </if>
+        <if test="userRegisterTime != null">
+            user_register_time,
+        </if>
+        <if test="userLoginTime != null">
+            user_login_time,
+        </if>
+        <if test="userPhoto != null">
+            user_photo,
+        </if>
+
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+			#{userId,jdbcType=VARCHAR},
+        <if test="userAccount != null">
+            #{userAccount,jdbcType=VARCHAR},
+        </if>
+        <if test="userPassword != null">
+            #{userPassword,jdbcType=VARCHAR},
+        </if>
+        <if test="userName != null">
+            #{userName,jdbcType=VARCHAR},
+        </if>
+        <if test="userIdcard != null">
+            #{userIdcard,jdbcType=VARCHAR},
+        </if>
+        <if test="userSex != null">
+            #{userSex,jdbcType=VARCHAR},
+        </if>
+        <if test="userAge != null">
+            #{userAge,jdbcType=INTEGER},
+        </if>
+        <if test="userPhone != null">
+            #{userPhone,jdbcType=VARCHAR},
+        </if>
+        <if test="userStatue != null">
+            #{userStatue,jdbcType=INTEGER},
+        </if>
+        <if test="userEmail != null">
+            #{userEmail,jdbcType=VARCHAR},
+        </if>
+        <if test="userPurview != null">
+            #{userPurview,jdbcType=INTEGER},
+        </if>
+        <if test="userOnlines != null">
+            #{userOnlines,jdbcType=INTEGER},
+        </if>
+        <if test="userArea != null">
+            #{userArea,jdbcType=VARCHAR},
+        </if>
+        <if test="userRegisterTime != null">
+            #{userRegisterTime,jdbcType=VARCHAR},
+        </if>
+        <if test="userLoginTime != null">
+            #{userLoginTime,jdbcType=VARCHAR},
+        </if>
+        <if test="userPhoto != null">
+            #{userPhoto,jdbcType=VARCHAR},
+        </if>
+
+        </trim>
+    </insert>
+  
+    <update id="updateSelective" parameterType="com.yinsin.simter.modal.yxos.YxosUser">
+        update yxos_user
+        <set>
+        <if test="userAccount != null">
+            user_account = #{userAccount,jdbcType=VARCHAR},
+        </if>
+        <if test="userPassword != null">
+            user_password = #{userPassword,jdbcType=VARCHAR},
+        </if>
+        <if test="userName != null">
+            user_name = #{userName,jdbcType=VARCHAR},
+        </if>
+        <if test="userIdcard != null">
+            user_idcard = #{userIdcard,jdbcType=VARCHAR},
+        </if>
+        <if test="userSex != null">
+            user_sex = #{userSex,jdbcType=VARCHAR},
+        </if>
+        <if test="userAge != null">
+            user_age = #{userAge,jdbcType=INTEGER},
+        </if>
+        <if test="userPhone != null">
+            user_phone = #{userPhone,jdbcType=VARCHAR},
+        </if>
+        <if test="userStatue != null">
+            user_statue = #{userStatue,jdbcType=INTEGER},
+        </if>
+        <if test="userEmail != null">
+            user_email = #{userEmail,jdbcType=VARCHAR},
+        </if>
+        <if test="userPurview != null">
+            user_purview = #{userPurview,jdbcType=INTEGER},
+        </if>
+        <if test="userOnlines != null">
+            user_onlines = #{userOnlines,jdbcType=INTEGER},
+        </if>
+        <if test="userArea != null">
+            user_area = #{userArea,jdbcType=VARCHAR},
+        </if>
+        <if test="userRegisterTime != null">
+            user_register_time = #{userRegisterTime,jdbcType=VARCHAR},
+        </if>
+        <if test="userLoginTime != null">
+            user_login_time = #{userLoginTime,jdbcType=VARCHAR},
+        </if>
+        <if test="userPhoto != null">
+            user_photo = #{userPhoto,jdbcType=VARCHAR},
+        </if>
+
+        </set>
+        where user_id = #{userId,jdbcType=VARCHAR}
+    </update>
+    
+    <update id="update" parameterType="com.yinsin.simter.modal.yxos.YxosUser">
+        update yxos_user
+        set 
+        user_account = #{userAccount,jdbcType=VARCHAR}, 
+        user_password = #{userPassword,jdbcType=VARCHAR}, 
+        user_name = #{userName,jdbcType=VARCHAR}, 
+        user_idcard = #{userIdcard,jdbcType=VARCHAR}, 
+        user_sex = #{userSex,jdbcType=VARCHAR}, 
+        user_age = #{userAge,jdbcType=INTEGER}, 
+        user_phone = #{userPhone,jdbcType=VARCHAR}, 
+        user_statue = #{userStatue,jdbcType=INTEGER}, 
+        user_email = #{userEmail,jdbcType=VARCHAR}, 
+        user_purview = #{userPurview,jdbcType=INTEGER}, 
+        user_onlines = #{userOnlines,jdbcType=INTEGER}, 
+        user_area = #{userArea,jdbcType=VARCHAR}, 
+        user_register_time = #{userRegisterTime,jdbcType=VARCHAR}, 
+        user_login_time = #{userLoginTime,jdbcType=VARCHAR}, 
+        user_photo = #{userPhoto,jdbcType=VARCHAR}
+
+        where user_id = #{userId,jdbcType=VARCHAR}
+    </update>
+    
+    <insert id="insertBatch" parameterType="java.util.List">  
+        insert into yxos_user (
+            user_id, user_account, user_password, user_name, user_idcard, user_sex, user_age, user_phone, user_statue, user_email, user_purview, user_onlines, user_area, user_register_time, user_login_time, user_photo
+        )
+        values 
+        <foreach collection="list" index="index" item="item" separator=",">  
+        (
+            #{item.userId,jdbcType=VARCHAR}, 
+	        #{item.userAccount,jdbcType=VARCHAR}, 
+	        #{item.userPassword,jdbcType=VARCHAR}, 
+	        #{item.userName,jdbcType=VARCHAR}, 
+	        #{item.userIdcard,jdbcType=VARCHAR}, 
+	        #{item.userSex,jdbcType=VARCHAR}, 
+	        #{item.userAge,jdbcType=INTEGER}, 
+	        #{item.userPhone,jdbcType=VARCHAR}, 
+	        #{item.userStatue,jdbcType=INTEGER}, 
+	        #{item.userEmail,jdbcType=VARCHAR}, 
+	        #{item.userPurview,jdbcType=INTEGER}, 
+	        #{item.userOnlines,jdbcType=INTEGER}, 
+	        #{item.userArea,jdbcType=VARCHAR}, 
+	        #{item.userRegisterTime,jdbcType=VARCHAR}, 
+	        #{item.userLoginTime,jdbcType=VARCHAR}, 
+	        #{item.userPhoto,jdbcType=VARCHAR}
+
+        )
+        </foreach>
+    </insert>
+  
+    <delete id="deleteBatch" parameterType="java.util.List"> 
+        DELETE FROM yxos_user WHERE user_id IN 
+        <foreach close=")" collection="list" index="index" item="item" open="(" separator=",">  
+            #{item}  
+        </foreach> 
+    </delete>
+ 
+</mapper>

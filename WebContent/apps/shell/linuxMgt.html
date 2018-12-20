@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> 主机管理 </title>
+<script id="seajsnode" type="text/javascript" src="../../loader.js" data-js="./js/linuxmgt" data-css="./css/linuxmgt.css"></script>
+</head>
+<body>
+	<header>
+		<div class="form-group">
+			<div class="form-input">
+				<div class="btn-group" data-toggle="buttons">
+					<label class="btn btn-primary active">
+				    	<input type="radio" name="options" id="option1" checked value=""> 全部
+				  	</label>
+				  	<label class="btn btn-primary">
+				    	<input type="radio" name="options" id="option2" value="10"> 开发环境
+				  	</label>
+				  	<label class="btn btn-primary">
+				    	<input type="radio" name="options" id="option3" value="11"> 测试环境
+				  	</label>
+				  	<label class="btn btn-primary">
+				    	<input type="radio" name="options" id="option4" value="12"> 体验环境
+				  	</label>
+				  	<label class="btn btn-primary">
+				    	<input type="radio" name="options" id="option5" value="13"> 生产环境
+				  	</label>
+				  	<label class="btn btn-primary">
+				    	<input type="radio" name="options" id="option6" value="14"> 其他环境
+				  	</label>
+				</div>
+			</div>
+			<div class="form-button">
+				<button class="btn btn-success btn-add">新建节点</button>
+			</div>
+		</div>
+	</header>
+	<div class="container">
+		<div class="result-panel">
+			<table class="table datatable">
+				<thead>
+				<tr>
+					<th class="name-field">名称</th>
+					<th class="size-field">主机地址</th>
+					<th class="type-field">登录用户</th>
+					<th class="attr-field">端口</th>
+					<th class="owner-field">分组</th>
+					<th class="sort-disabled">操作</th>
+				</tr>
+				</thead>
+				<tbody id="data-body"></tbody>
+			</table>
+			<div class="pager-box"></div>
+		</div>
+	</div>
+	
+	<script type="text/template" id="list-tr.tpl">
+		<tr class="row-{{d.index}} {{d.filetype}}" data-id="{{d.rowId}}">
+			<td class="name-field">{{d.name}}</td>
+			<td class="size-field">{{d.size}}</td>
+			<td class="type-field">{{d.type}}</td>
+			<td class="attr-field">{{d.attr}}</td>
+			<td class="owner-field">{{d.owner}}</td>
+			<td class="sort-disabled">
+				{{d.buttons}}
+			</td>
+		</tr>
+	</script>
+	
+	<script type="text/template" id="list-btn.tpl">
+		<a class="icon-btn {{d.class}}" data-right="{{d.rightCode}}" href="javascript:;" data-toggle="tooltip" data-placement="left" title="{{d.title}}"><i class="icon {{d.icon}}"></i></a>
+	</script>
+	
+	<script type="text/template" id="icon-view.tpl">
+		<img src="{{d.src}}" width="24" height="24" />
+	</script>
+	
+	<script type="text/template" id="href.tpl">
+		<a href="javascript:void(0);" data-toggle="tooltip" data-placement="left" title="{{d.title}}" class="tips">地址</a>
+	</script>
+	
+	<script type="text/template" id="edit.tpl">
+		<form id="" class="form">					
+	 		<div class="fields">
+		   		<div class="icon-box">
+		      		<i class="icon icon-window"></i>
+		     	</div>
+		     	<input id="new-name" placeholder="名称" value="{{d.name}}">
+	    	</div>
+	   		<div class="fields">
+				<div class="icon-box">
+	        		<i class="icon icon-linux"></i>
+	      		</div>
+	      		<input id="new-host" placeholder="主机地址" value="{{d.host}}">
+	    	</div>
+			<div class="fields">
+				<div class="icon-box">
+	        		<i class="icon icon-user"></i>
+	      		</div>
+	      		<input id="new-account" placeholder="登录用户" value="{{d.account}}">
+	    	</div>
+			<div class="fields">
+				<div class="icon-box">
+	        		<i class="icon icon-lock"></i>
+	      		</div>
+	      		<input id="new-password" type="password" placeholder="登录密码" value="{{d.password}}">
+	    	</div>
+			<div class="fields">
+				<div class="icon-box">
+	        		<i class="icon icon-circle-blank"></i>
+	      		</div>
+	      		<input id="new-port" placeholder="端口号" value="{{d.port}}">
+	    	</div>	
+	    	<div class="fields">
+				<div class="icon-box">
+	        		<i class="icon icon-cloud"></i>
+	      		</div>
+	      		<select id="new-group" class="chosen">
+	      			<option value="10" {{d.groupId == '10' ? 'selected' : ''}}>开发环境</option>
+	      			<option value="11" {{d.groupId == '11' ? 'selected' : ''}}>测试环境</option>
+	      			<option value="12" {{d.groupId == '12' ? 'selected' : ''}}>体验环境</option>
+	      			<option value="13" {{d.groupId == '13' ? 'selected' : ''}}>生产环境</option>
+	      			<option value="14" {{d.groupId == '14' ? 'selected' : ''}}>其他环境</option>
+	      		</select>
+	    	</div>
+	   	</form>
+	</script>
+	
+</body>
+</html>

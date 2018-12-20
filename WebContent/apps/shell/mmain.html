@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="renderer" content="webkit" />
+<title> Linux Web Os </title>
+<link rel="stylesheet" href="./css/main.css" />
+<script id="seajsnode" type="text/javascript" src="../../loader.js" data-js="./js/mmain.js"></script>
+</head>
+<body class="mobile">
+	<div class="modal fade" id="mgtModal">
+	  	<div class="modal-dialog">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+	        		<h4 class="modal-title">节点管理</h4>
+	      		</div>
+	      		<div class="modal-body">
+	        		<iframe id="mgtframe" src="./mlinuxMgt.html" frameborder="0" width="100%" height="100%"></iframe>
+	      		</div>
+	    	</div>
+	  	</div>
+	</div>
+
+	<div class="main-body">
+		<div class="sidebar-switch" data-toggle="tooltip" title="点击切换是否隐藏侧边栏(F4)">
+			<div class="switch-left"><i class="icon icon-caret-left"></i></div><div class="switch-right hidden"><i class="icon icon-caret-right"></i></div>
+		</div>
+		<div class="body-left">
+			<div class="tool-box">
+				<a class="icon-btn btn-new" href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="新建"><i class="icon icon-linux"></i> 新建</a>
+				<a class="icon-btn btn-mgt" href="javascript:;" data-toggle="tooltip" data-placement="bottom" title="管理"><i class="icon icon-window"></i> 管理</a>
+			</div>
+			<div class="menu-panel">
+				<ul class="nav" id="side-menu">
+					<li class="loading-li hidden">
+						<i class="icon icon-spin icon-spinner"></i> 加载中...
+					</li>
+                </ul>
+			</div>
+			<div class="menu-footer">
+				主机列表
+			</div>
+		</div>
+		<div class="body-right">
+			<!-- <div class="body-fullscreen" data-toggle="tooltip" title="点击切换是否全屏显示(F9)">
+				<i class="icon icon-fullscreen"></i>
+			</div> -->
+			<div class="header">
+				<div class="head-block tabs">
+			        <div class="btn-group roll-nav roll-right">
+			            <button class="dropdown J_tabClose" data-toggle="dropdown" aria-expanded="false">操作<span class="caret"></span></button>
+			            <ul role="menu" class="dropdown-menu dropdown-menu-right">
+			                <li class="J_tabFlush"><a href="javascript:;">刷新桌面</a></li>
+			                <li class="divider"></li>
+			                <li class="J_tabCloseAll"><a href="javascript:;">关闭全部</a></li>
+			                <li class="J_tabCloseOther"><a href="javascript:;">关闭其他</a></li>
+			                <li class="divider"></li>
+			                <li class="menu-items">
+			                	<ul class="menu-lists"></ul>
+			                </li>
+			            </ul>
+			        </div>
+			        <nav class="page-tabs J_menuTabs">
+			            <div class="page-tabs-content">
+			            </div>
+			        </nav>
+			        <a href="javascript:;" class="roll-nav roll-right J_tabExit"><i class="icon icon-sign-out"></i> 退出</a>
+				</div>
+			</div>
+			<div class="body">
+				<iframe id="rightFrame-main" src="./welcome.html" class="rightframe" name="rightFrame" frameborder="0" width="100%" height="100%" scrolling="auto"></iframe>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/template" id="iframe.tpl">
+		<iframe id="rightFrame-{{d.fid}}" src="{{d.src}}" class="rightframe" name="rightFrame" frameborder="0" width="100%" height="100%" scrolling="auto"></iframe>
+	</script>
+	
+	<script type="text/template" id="page_tab.tpl">
+		<a href="javascript:;" class="active J_menuTab {{d.id}}" data-id="{{d.id}}">{{d.text}} <i class="icon icon-remove-sign" title="关闭当前页签(Alt + C)"></i></a>
+	</script>
+	
+	<script type="text/template" id="menu_line.tpl">
+		<li>
+  			<a class="nav-menu" href="javascript:;" data-href="#" data-id="{{d.menuId}}" data-index="{{d.index}}">
+        		<i class="icon icon-folder-close"></i>
+           		<span class="nav-label">{{d.menuName}}</span>
+            	<span class="icon icon-angle-left arrow"></span>
+        	</a>
+        	<ul id="om-{{d.menuId}}" class="nav nav-second-level collapse" aria-expanded="false">
+        		{{d.items}}
+      		</ul>
+    	</li>
+	</script>
+	<script type="text/template" id="menu_item.tpl">
+		<li>
+        	<a class="J_menuItem" href="javascript:;" data-href="{{d.menuUrl}}" data-id="{{d.menuId}}" data-index="{{d.index}}">{{d.menuName}}</a>
+        </li>
+	</script>
+	
+	<script type="text/template" id="menu_item2.tpl">
+		<li>
+			<a class="J_tab_menuItem m{{d.menuId}}" data-href="{{d.menuUrl}}" data-id="{{d.menuId}}" data-index="{{d.index}}" href="javascript:;">{{d.menuName}}</a>
+		</li>
+	</script>
+	
+	<script type="text/template" id="new.tpl">
+		<form id="" class="form">					
+	 		<div class="fields">
+		   		<div class="icon-box">
+		      		<i class="icon icon-window"></i>
+		     	</div>
+		     	<input id="new-name" placeholder="名称" value="{{d.name}}">
+	    	</div>
+	   		<div class="fields">
+				<div class="icon-box">
+	        		<i class="icon icon-linux"></i>
+	      		</div>
+	      		<input id="new-ip" placeholder="主机地址" value="{{d.ip}}">
+	    	</div>	
+	    	<div class="fields">
+				<div class="icon-box">
+	        		<i class="icon icon-cloud"></i>
+	      		</div>
+	      		<select id="new-group" class="chosen">
+	      			<option value="10">开发环境</option>
+	      			<option value="11">测试环境</option>
+	      			<option value="12">体验环境</option>
+	      			<option value="13">生产环境</option>
+	      			<option value="14">其他环境</option>
+	      		</select>
+	    	</div>
+	   	</form>
+	</script>
+</body>
+</html>

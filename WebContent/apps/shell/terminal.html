@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> 终端 </title>
+<script id="seajsnode" type="text/javascript" src="../../loader.js" data-js="./js/terminal" data-css="./css/terminal.css"></script>
+</head>
+<body>
+	
+	<div class="candidate-box hidden">
+		
+	</div>
+	
+	<div id="panel-shell">
+        <div class="shell-view">
+        	<div class="pop-i hidden"><i class="icon icon-hand-right"></i></div>
+			<span class="base prompt">$</span><span class="input"><span class="left"></span><span class="cursor blink">&nbsp;</span><span class="right"></span><input id="inputbox"/></span>
+        </div>
+    </div>
+	
+	<script type="text/html" id="output.html">
+		<div class="output-view"><span class="prompt">{{d.separate}}</span><span class="output {{d.error}}">{{d.value}}</span></div>
+	</script>
+	
+	<script type="text/html" id="text.html"><span class="{{d.color}}">{{d.value}}</span></script>
+	
+	<script type="text/html" id="citem.html">
+		<div class="citem {{d.css}}">{{d.text}}</div>
+	</script>
+	
+</body>
+</html>

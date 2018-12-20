@@ -1,0 +1,114 @@
+@CHARSET "UTF-8";
+
+@IMPORT url("../../../common/css/common.css");
+
+body.mobile {
+	width: 920px;
+	overflow: auto;
+}
+
+header {
+    width: 100%;
+    height: 40px;
+    line-height: 33px;
+    padding: 5px 2px;
+}
+
+header .form-text {
+    float: left;
+    width: 65px;
+    line-height: 33px;
+    text-align: right;
+}
+
+header .form-input {
+    float: left;
+    width: calc(100% - 160px);
+    padding-left: 18px;
+}
+
+header .form-button {
+    width: 90px;
+    float: left;
+    text-align: center;
+    line-height: 30px;
+}
+
+header .form-button .btn {
+    padding: 5px 10px;
+}
+
+.container {
+    max-width: 100%;
+}
+
+.result-panel {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.attr-field {
+	width: 120px !important;
+}
+
+.size-field {
+	width: 150px !important;
+}
+
+.type-field {
+	width: 150px !important;
+}
+
+.owner-field {
+	width: 120px !important;
+}
+
+.sort-disabled {
+	width: 130px !important;
+}
+
+.btn-del {
+    color: red;
+}
+
+.btn-open-folder {
+    color: #00a220;
+}
+
+.btn-download {
+    color: #e40098;
+}
+
+.btn-upload {
+    color: #ffb700;
+}
+
+.btn-edit {
+    color: #00bfbb;
+}
+
+.form .icon-box {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.form .fields {
+    height: 35px;
+}
+
+.form .fields input,
+.form .fields select {
+    width: 225px;height: 25px;outline: none;
+    padding: 2px 5px;
+}
+
+.form .fields input,
+.form .fields select {
+	border: 1px solid #dae8ff;
+}
+
+.form .fields input:focus,
+.form .fields select:focus {
+    border: 1px solid #66a0ff;
+}

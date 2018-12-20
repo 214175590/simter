@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+.loginFrame {
+	overflow: hidden;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 80000;
+	display: none;
+}
+
+.loginFrame.cirle {
+	-webkit-animation: circle .3s infinite linear; /*匀速 循环*/
+	-ws-animation: circle .3s infinite linear; /*匀速 循环*/
+	-moz-animation: circle .3s infinite linear; /*匀速 循环*/
+	animation: circle .3s infinite linear; /*匀速 循环*/
+}
+
+@-webkit-keyframes circle{
+	0%{ transform: rotate(0deg); }
+	100%{ transform: rotate(-360deg); }
+}

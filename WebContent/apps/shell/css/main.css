@@ -1,0 +1,568 @@
+@CHARSET "UTF-8";
+
+@import "./frame.css";
+
+/* body部分 */
+.main-body {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.main-body .body-left {
+    width: 260px;
+    height: 100%;
+    float: left;
+    border-right: 1px solid #dddddd;
+    background: #2f4050;
+}
+
+.main-body .body-left.float-left {
+    position: absolute;
+    z-index: 1;
+    left: -260px;
+}
+
+.main-body .body-left.float-left:hover {
+    left: 0;
+}
+
+.main-body .body-right {
+    position: relative;
+    width: calc(100% - 260px);
+    height: 100%;
+    float: left;
+}
+
+.main-body .body-right.fullscreen {
+    position: absolute;
+    width: 100% !important;
+    height: calc(100% + 100px);
+    z-index: 1000;
+    top: -100px;	
+}
+
+.main-body .body-left .tool-box {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+}
+
+.main-body .body-left .tool-box .icon-btn {
+    color: #cccccc;
+    margin-left: 5px;
+    border: 1px solid #cccccc;
+    padding: 2px;
+}
+
+.main-body .body-left .tool-box .icon-btn:hover {
+    color: #2d99a9;
+    border: 1px solid #2d99a9;
+    text-decoration: none;
+}
+
+.modal .icon-box {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.modal .fields {
+    height: 35px;
+}
+
+.modal .fields input,
+.modal .fields select {
+    width: 225px;height: 25px;outline: none;
+    padding: 2px 5px;
+}
+
+.modal .fields input,
+.modal .fields select {
+	border: 1px solid #dae8ff;
+}
+
+.modal .fields input:focus,
+.modal .fields select:focus {
+    border: 1px solid #66a0ff;
+}
+
+.main-body .body-left .menu-panel {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 90px);
+    overflow: auto;
+}
+
+.main-body .body-left .menu-panel .loading-li {
+    color: #ffffff;
+    font-size: 14px;
+    padding: 100px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.main-body .body-left .menu-panel .error {
+    color: #ffffff;
+    font-size: 14px;
+    padding: 100px 0;
+    width: 100%;
+    text-align: center;
+}
+
+.main-body .body-left .menu-copyright {
+    position: relative;
+    width: 100%;
+    height: 60px;
+    border-top: 1px solid #5a748c;
+}
+
+.main-body .body-left .menu-copyright .logo {
+    width: 90px;
+    height: 100%;
+    padding-top: 10px;
+    padding-left: 5px;
+    float: left;
+}
+
+.main-body .body-left .menu-copyright .copyright {
+    float: left;
+    text-align: center;
+    color: #788592;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.main-body .body-left .menu-copyright .copyright .mainc {
+    color: #cad1d8;
+    font-size: 15px;
+}
+
+.main-body .body-left .menu-panel a.nav-menu > i {
+    display: inline-block;
+    width: 16px;
+    height: 14px;
+    text-align: center;
+}
+
+.main-body .body-left .menu-panel .nav a {
+    color: #a9b5bf;
+}
+
+.main-body .body-left .menu-panel > ul > li.active {
+    border-left: 3px solid #f6ab00;
+}
+    
+.main-body .body-left .menu-panel .nav > li > a:hover,
+.main-body .body-left .menu-panel .nav > li > a:focus,
+.main-body .body-left .menu-panel .nav > li.active > a
+ {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #1d3042;
+}
+
+.main-body .body-left .menu-panel .nav.nav-second-level.collapse > li {
+    height: 36px;
+}
+
+.main-body .body-left .menu-panel .nav.nav-second-level.collapse li > a {
+    padding-left: 30px !important;
+}
+.main-body .body-left .menu-panel .nav.nav-second-level.collapse {
+    background: #3b566f;
+}
+
+.main-body .body-left .menu-panel .nav.nav-second-level.collapse li > a:hover,
+.main-body .body-left .menu-panel .nav.nav-second-level.collapse li > a:focus,
+.main-body .body-left .menu-panel .nav.nav-second-level.collapse li > a.active {
+    background-color: #194063;
+    color: #fdc443;
+}
+
+.main-body .body-left .menu-panel .nav.nav-second-level.collapse .nav.nav-third-level.collapse li > a {
+    padding-left: 50px !important;
+}
+
+.main-body .body-left .menu-panel .nav > li .arrow {
+    float: right;
+    margin-top: 2px;
+}
+
+.main-body .sidebar-switch {
+    position: absolute;
+    width: auto;
+    height: 30px;
+    left: 244px;
+    bottom: 27px;
+    z-index: 21;
+    opacity: 0.5;
+}
+
+.main-body .sidebar-switch:hover{
+	opacity: 1;
+}
+
+.main-body .body-right:hover .body-fullscreen {
+	-webkit-animation-name: fadeIn; /*动画名称*/
+	-webkit-animation-duration: 0.5s; /*动画持续时间*/
+	-webkit-animation-iteration-count: 1; /*动画次数*/
+	-webkit-animation-delay: 0s; /*延迟时间*/
+	opacity: 1;
+}
+
+.main-body .body-fullscreen:hover {
+    border: 1px solid #f5f5f5;
+    background: #2b81ab;
+    color: #ffffff;
+}
+
+.main-body .body-fullscreen {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    border: 1px solid #dddddd;
+    background: #ffffff;
+    bottom: 16px;
+    left: -1px;
+    z-index: 3;
+    color: #2b81ab;
+    opacity: 0;
+    cursor: pointer;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+	opacity: 0;
+  }
+  100% {
+	opacity: 1;
+  }
+}
+
+.main-body .sidebar-switch .switch-left,
+.main-body .sidebar-switch .switch-right {
+    background: #ffffff;
+    width: 15px;
+    height: 25px;
+    line-height: 26px;
+    text-align: center;
+    padding: 0px;
+    outline: 0;
+    color: #2b81ab;
+    float: left;
+    cursor: pointer;
+}
+
+.main-body .sidebar-switch .switch-left:hover,
+.main-body .sidebar-switch .switch-right:hover {
+    background-color: #2b81ab;
+    color: white;
+    border: 0;
+}
+
+.main-body .sidebar-switch .switch-left {
+    border-radius: 50px 0 0 50px;
+    border-right: 0;
+}
+
+.main-body .sidebar-switch .switch-right {
+    border-radius: 0 50px 50px 0;
+    border: 1px solid #2b81ab;
+    border-left: 0;
+}
+
+.header {
+    width: 100%;
+    height: 40px;
+}
+
+.header .head-block {
+	float: left;
+	height: 100%;
+}
+
+.header .head-block.tabs {
+    width: 100%;
+    height: 40px;
+    position: relative;
+    border-top: 1px solid #2f4050;
+    border-bottom: 1px solid #2f4050;
+}
+
+.header .head-block.system h2 {
+    margin-top: 10px !important;
+    margin-bottom: 5px !important;
+}
+
+.header .head-block.tabs .page-tabs.J_menuTabs {
+    margin-left: 40px;
+    width: 100000px;
+    height: 38px;
+    overflow: hidden;
+}
+
+.header .head-block.tabs .roll-nav {
+    position: absolute;
+    width: 40px;
+    height: 38px;
+    text-align: center;
+    color: #999;
+    z-index: 11;
+    top: 0;
+}
+
+.header .head-block.tabs button {
+    background: #fff;
+    border: 0;
+    height: 38px;
+    width: 40px;
+    outline: 0;
+}
+
+.header .head-block.tabs .roll-right.J_tabRight {
+    right: 140px !important;
+}
+
+.header .head-block.tabs .roll-right.btn-group {
+    right: 60px !important;
+    width: 80px;
+    padding: 0;
+}
+
+.header .head-block.tabs .roll-right.J_tabExit {
+    background: #fff;
+    height: 38px;
+    line-height: 38px;
+    width: 60px;
+    outline: 0;
+    right: 0;
+}
+
+.header .head-block.tabs .page-tabs .page-tabs-content {
+    float: left;
+}
+
+.header .head-block.tabs .page-tabs .page-tabs-content > a:focus {
+    text-decoration: none;
+}
+
+.header .head-block.tabs .page-tabs .J_menuTab {
+    display: block;
+    height: 38px;
+    line-height: 38px;
+    float: left;
+    border-right: solid 1px #e5e5e5;
+    padding: 0 15px;
+}
+
+.header .head-block.tabs .page-tabs .J_menuTab.active {
+	background: #2f4050;
+    color: #a7b1c2;
+}
+
+.header .head-block.tabs .page-tabs .J_menuTab i:hover {
+    color: #fb5757 !important;
+    font-size: 16px;
+}
+
+.header .head-block.tabs .roll-right {
+    right: 0;
+    border-left: solid 1px #e5e5e5;
+}
+
+.header .head-block.tabs .roll-left {
+    border-right: solid 1px #e5e5e5;
+}
+
+.header .head-block.tabs .roll-right.btn-group button {
+    width: 80px;
+}
+
+.header .head-block.tabs .roll-nav:hover,
+.header .head-block.tabs .page-tabs a:hover {
+    color: #555555;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+
+.header .head-block.tabs .page-tabs a.active i:hover,
+.header .head-block.tabs .page-tabs a.active:hover {
+    background: #293846 !important;
+    color: #fff !important;
+}
+
+.menu-panel li.nav-item {
+    width: 100%;
+    line-height: 30px;
+    padding-left: 10px;
+    color: #8da5b1;
+}
+
+.menu-panel li.nav-item:hover {
+    background: #192938;
+    color: #297398;
+    cursor: pointer;
+}
+
+.body {
+	width: 100%;
+	height: calc(100% - 40px);
+}
+
+#mgtModal .modal-dialog,
+#mgtModal .modal-content {
+    width: 1020px;
+    height: 620px;
+}
+
+#mgtModal .modal-body {
+	height: calc(100% - 45px);
+	width: calc(100% - 3px);
+}
+
+
+
+
+/* mobile */
+.mobile .main-body .body-right {
+	width: 100% !important;
+}
+
+.mobile .main-body .body-left {
+    position: absolute;
+    z-index: 20;
+}
+
+.mobile .main-body .body-left .tool-box {
+    height: 50px;
+    line-height: 50px;
+    padding: 0 10px;
+}
+
+.mobile .main-body .body-left .tool-box .icon-btn {
+    padding: 6px 25px;
+}
+
+.mobile .menu-footer {
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    background: #1f2933;
+}
+
+.mobile .main-body .sidebar-switch {
+    height: 40px;
+    left: 240px;
+    bottom: 40px;
+    opacity: 0.5;
+}
+
+.mobile .main-body .sidebar-switch .switch-left,.mobile .main-body .sidebar-switch .switch-right {
+    width: 20px;
+    height: 40px;
+    line-height: 40px;
+    background: #bee1ff;
+    padding-top: 3px;
+}
+
+.mobile .main-body .sidebar-switch .icon {
+    font-size: 35px;
+}
+
+.mobile .dropdown-menu {
+    max-height: 500px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.mobile .header .head-block.tabs {
+	background: #040a16;
+}
+
+.mobile .header .head-block.tabs .roll-right.btn-group {
+    width: 70px;
+    right: auto !important;
+    left: 0;
+    border-left: 0;
+    border-right: 0;
+    background: #2f4050;
+    color: #ffffff;
+}
+
+.mobile .header .head-block.tabs .roll-right.btn-group button {
+    width: 50px !important;
+    background: #2f4050;
+    color: #ffffff;
+}
+
+.mobile .header .head-block.tabs .roll-right.J_tabRight {
+    right: 90px !important;
+}
+
+.mobile .header .head-block.tabs .roll-right.J_tabExit {
+    width: 70px;
+    background: #2f4050;
+    color: #ffffff;
+    border-left: 0;
+}
+
+.mobile .header .head-block.tabs .page-tabs.J_menuTabs {
+    margin-left: 70px;
+    width: calc(100% - 140px);
+}
+
+.mobile .header .head-block.tabs .page-tabs .J_menuTab {
+    width: calc(100% - 140px);
+}
+
+.mobile .header .head-block.tabs .page-tabs .page-tabs-content {
+    width: 100%;
+}
+
+.mobile .header .head-block.tabs .page-tabs .J_menuTab.active {
+    display: inline-block;
+    width: 100%;
+    border-right: 0;
+}
+
+.mobile .header .head-block.tabs .page-tabs .J_menuTab {
+    display: none;
+    text-align: center;
+}
+
+.mobile .header .head-block.tabs .page-tabs .J_menuTab .icon-remove-sign {
+    margin-left: 10px;
+}
+
+.mobile .menu-lists {
+    list-style: none;
+    padding-left: 0;
+    display: block;
+    position: relative;
+    top: 0;
+    left: 0;
+    border: 0;
+    box-shadow: none;
+}
+
+.mobile .menu-lists a.J_tab_menuItem {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.53846154;
+    color: #353535;
+    white-space: nowrap;
+    margin-bottom: 10px;
+}
+
+.mobile #mgtModal .modal-dialog,
+.mobile #mgtModal .modal-content {
+    width: 100%;
+    height: calc(100% - 30px);
+}

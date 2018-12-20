@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> 资源管理器 </title>
+<script id="seajsnode" type="text/javascript" src="../../loader.js" data-js="./js/explorer" data-css="./css/explorer.css"></script>
+</head>
+<body>
+	<div class="modal fade" id="progressModal">
+	  	<div class="modal-dialog">
+	    	<div class="modal-content">
+	      		<div class="modal-header">
+	        		<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+	        		<h4 class="modal-title"></h4>
+	      		</div>
+	      		<div class="modal-body">
+	        		<div class="progress progress-striped active">
+			  			<div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+			    			<span class="sr-only">0%</span>
+			  			</div>
+					</div>
+	      		</div>
+	    	</div>
+	  	</div>
+	</div>
+
+	<header>
+		<div class="form-group">
+			<label class="form-text" for="location">路径：</label>
+			<div class="form-input">
+				<input class="form-control" id="location" value=""/>
+			</div>
+			<div class="form-button">
+				<button class="btn btn-success btn-open">打开</button>
+				<button class="btn btn-success btn-parent"><i class="icon icon-reply"></i></button>
+			</div>
+		</div>
+	</header>
+	<div class="container">
+		<div class="result-panel">
+			<div class="upload-box"><button id="upload"></button></div>
+			<table class="table datatable">
+				<thead>
+				<tr>
+					<th class="name-field">名称</th>
+					<th class="size-field">大小</th>
+					<th class="type-field">类型</th>
+					<th class="modified-field">最后修改时间</th>
+					<th class="attr-field">属性</th>
+					<th class="owner-field">拥有者</th>
+					<th class="sort-disabled">操作</th>
+				</tr>
+				</thead>
+				<tbody id="data-body"></tbody>
+			</table>
+			<div class="pager-box"></div>
+		</div>
+	</div>
+	<iframe id="down-frame" frameborder="0" width="0" height="0" src=""></iframe>
+	
+	<script type="text/template" id="list-tr.tpl">
+		<tr class="row-{{d.index}} {{d.filetype}}" data-id="{{d.rowId}}">
+			<td class="name-field">{{d.name}}</td>
+			<td class="size-field">{{d.size}}</td>
+			<td class="type-field">{{d.type}}</td>
+			<td class="modified-field">{{d.modified}}</td>
+			<td class="attr-field">{{d.attr}}</td>
+			<td class="owner-field">{{d.owner}}</td>
+			<td class="sort-disabled">
+				{{d.buttons}}
+			</td>
+		</tr>
+	</script>
+	
+	<script type="text/template" id="list-btn.tpl">
+		<a class="icon-btn {{d.class}}" data-right="{{d.rightCode}}" href="javascript:;" data-toggle="tooltip" data-placement="left" title="{{d.title}}"><i class="icon {{d.icon}}"></i></a>
+	</script>
+	
+	<script type="text/template" id="icon-view.tpl">
+		<img src="{{d.src}}" width="24" height="24" />
+	</script>
+	
+	<script type="text/template" id="href.tpl">
+		<a href="javascript:void(0);" data-toggle="tooltip" data-placement="left" title="{{d.title}}" class="tips">地址</a>
+	</script>
+	
+</body>
+</html>

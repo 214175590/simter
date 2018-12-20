@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+
+html, body {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+.wait-panel {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 10;
+	background: #ffffff;
+	text-align: center;
+}
+
+.wait-panel .wait-img {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: calc(20% - 100px);
+}
